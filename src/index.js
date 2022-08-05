@@ -36,7 +36,6 @@ function showDefaultCityTemp(response) {
   document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
     response.data.wind.speed
   )}km/h`;
-  console.log(response.data);
 }
 
 function showDefaultCity(city) {
