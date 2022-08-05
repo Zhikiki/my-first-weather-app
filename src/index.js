@@ -49,7 +49,7 @@ function chosenCity(event) {
   event.preventDefault();
   let cityElement = document.querySelector("#current-city");
 
-  cityInput = document.querySelector("#city-input");
+  let cityInput = document.querySelector("#city-input");
   cityElement.innerHTML = cityInput.value;
 
   let apiKey = `da6d6b75abd767e257a129a08b4d0f5d`;
