@@ -72,12 +72,14 @@ form {
 }
 
 .wheather-summary {
-  margin: 20px 8px;
   padding: 10px 0;
   max-width: 710px;
   font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
   color: #5a6275;
+}
+.header {
+  margin: 8px;
 }
 .header-city {
   font-size: 52px;
@@ -86,11 +88,12 @@ form {
   text-transform: capitalize;
 }
 .summary-temperature {
+  margin: 0 auto;
   color: #fd3366;
   font-size: 60px;
   font-weight: 700;
 }
-.wheather-icon {
+.current-wheather-icon {
   color: #fd3366;
   font-size: 54px;
 }
@@ -112,11 +115,18 @@ form {
   color: #fd3366;
   cursor: pointer;
 }
-
+.summury-details {
+  margin: auto;
+}
 .wheather-forecast {
   padding: 10px 0;
   font-size: 16px;
   text-align: center;
+}
+
+.wheather-icon {
+  color: #fd3366;
+  font-size: 36px;
 }
 
 .signature {

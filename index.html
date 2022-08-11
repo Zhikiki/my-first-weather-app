@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HW-final_w5_HW</title>
-    <link rel="stylesheet" href="src/styles.css" type="text/css" />
     <!-- CSS only -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
@@ -24,33 +23,46 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/styles.css" type="text/css" />
   </head>
   <body>
     <div class="container">
       <div class="wheather-app-container">
         <div class="row popular-city-container m-2">
-          <div class="col p-1">
-            <a href="" class="popular-city">Kiev</a>
+          <div class="col-12 col-sm-6">
+            <div class="row">
+              <div class="col p-1">
+                <a href="" class="popular-city">Kiev</a>
+              </div>
+              <div class="col p-1">
+                <a href="" class="popular-city">Warsaw</a>
+              </div>
+              <div class="col p-1">
+                <a href="" class="popular-city">Berlin</a>
+              </div>
+            </div>
           </div>
-          <div class="col p-1">
-            <a href="" class="popular-city">Warsaw</a>
-          </div>
-          <div class="col p-1">
-            <a href="" class="popular-city">Berlin</a>
-          </div>
-          <div class="col p-1">
-            <a href="" class="popular-city">Budapest</a>
-          </div>
-          <div class="col p-1">
-            <a href="" class="popular-city">Lisbon</a>
+          <div class="col-12 col-sm-6">
+            <div class="row">
+              <div class="col p-1">
+                <a href="" class="popular-city">Budapest</a>
+              </div>
+              <div class="col p-1">
+                <a href="" class="popular-city">Lisbon</a>
+              </div>
+              <div class="col p-1">
+                <a href="" class="popular-city">Paris</a>
+              </div>
+            </div>
           </div>
         </div>
         <form id="search-city-form">
           <input
-            type="text"
+            type="search"
             class="enter-city"
             id="city-input"
             placeholder="Enter a city"
+            autocomplete="off"
           />
           <input type="submit" value="Search" class="search-city-button" />
           <input
@@ -60,26 +72,26 @@
             id="current-location-button"
           />
         </form>
+        <div class="header">
+          <h1 class="header-city" id="current-city"></h1>
+          <div id="date">Sunday 15:20</div>
+          <div>Clear</div>
+        </div>
         <div class="row wheather-summary m-2">
-          <div class="col-7 p-0">
-            <h1 class="header-city" id="current-city">Kiev</h1>
-            <div id="date">Sunday 15:20</div>
-            <div>Clear</div>
-            <div class="summary-temperature">
-              <i class="fa-solid fa-sun wheather-icon"></i>
-              <span id="current-temp">30</span>
-              <div class="temp-icon">
-                <a href="#" class="celsius-fahrenheit-link" id="link-celsius"
-                  >°C</a
-                >
-                |
-                <a href="#" class="celsius-fahrenheit-link" id="link-fahrenheit"
-                  >°F</a
-                >
-              </div>
+          <div class="col-12 col-sm-6 p-0 summary-temperature text-center">
+            <i class="fa-solid fa-sun current-wheather-icon"></i>
+            <span id="current-temp"></span>
+            <div class="temp-icon">
+              <a href="#" class="celsius-fahrenheit-link" id="link-celsius"
+                >°C</a
+              >
+              |
+              <a href="#" class="celsius-fahrenheit-link" id="link-fahrenheit"
+                >°F</a
+              >
             </div>
           </div>
-          <div class="col-5">
+          <div class="col-12 col-sm-6 p-0 summury-details">
             <div id="humidity">Humidity: 45%</div>
             <div id="wind">Wind: 4km/h</div>
           </div>
@@ -119,6 +131,13 @@
               <i class="fa-solid fa-cloud-sun-rain wheather-icon"></i>
             </div>
             <div>25°</div>
+          </div>
+          <div class="col px-0">
+            <div>Sat</div>
+            <div>
+              <i class="fa-solid fa-cloud-sun-rain wheather-icon"></i>
+            </div>
+            <div>28°</div>
           </div>
         </div>
       </div>
