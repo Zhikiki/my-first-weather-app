@@ -24,18 +24,59 @@ function formatedDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function formatIcon(defaultIcon) {
+  if (defaultIcon === "01d" || defaultIcon === "01n") {
+    return `fa-solid fa-sun`;
+  }
+  if (defaultIcon === "02d" || defaultIcon === "02n") {
+    return `fa-solid fa-cloud-sun`;
+  }
+  if (
+    defaultIcon === "03d" ||
+    defaultIcon === "03n" ||
+    defaultIcon === "04d" ||
+    defaultIcon === "04n"
+  ) {
+    return `fa-solid fa-cloud`;
+  }
+
+  if (
+    defaultIcon === "09d" ||
+    defaultIcon === "09n" ||
+    defaultIcon === "10d" ||
+    defaultIcon === "10n"
+  ) {
+    return `fa-solid fa-cloud-rain`;
+  }
+
+  if (defaultIcon === "11d" || defaultIcon === "11d") {
+    return `fa-solid fa-cloud-bolt`;
+  }
+  if (defaultIcon === "13d" || defaultIcon === "13n") {
+    return `fa-solid fa-snowflake`;
+  }
+  if (defaultIcon === "50d" || defaultIcon === "50n") {
+    return `fa-solid fa-cloud`;
+  }
+}
+
 function showDefaultCityTemp(response) {
+  document.querySelector("#weather-status").innerHTML =
+    response.data.weather[0].main;
   document.querySelector("#current-city").innerHTML = response.data.name;
   document.querySelector("#current-temp").innerHTML = Math.round(
     response.data.main.temp
   );
-
+  // console.log(response.data.weather[0].main);
   document.querySelector("#humidity").innerHTML = `Humidity: ${Math.round(
     response.data.main.humidity
   )}%`;
   document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
     response.data.wind.speed
   )}km/h`;
+  document
+    .querySelector("#current-weather-icon")
+    .setAttribute("class", formatIcon(response.data.weather[0].icon));
 }
 
 function showDefaultCity(city) {
@@ -57,6 +98,13 @@ function chosenCity(event) {
 }
 
 function showTemperature(response) {
+  let weatherStatus = document.querySelector("#weather-status");
+  weatherStatus.innerHTML = response.data.weather[0].main;
+
+  document
+    .querySelector("#current-weather-icon")
+    .setAttribute("class", formatIcon(response.data.weather[0].icon));
+
   let currentTemp = Math.round(response.data.main.temp);
   let currentHumidity = Math.round(response.data.main.humidity);
   let currentWind = Math.round(response.data.wind.speed);
@@ -72,8 +120,15 @@ function showTemperature(response) {
 }
 
 function showCurrentLocationWeather(response) {
-  console.log(response.data);
   let currentLocationCity = response.data.name;
+
+  let weatherStatus = document.querySelector("#weather-status");
+  weatherStatus.innerHTML = response.data.weather[0].main;
+
+  document
+    .querySelector("#current-weather-icon")
+    .setAttribute("class", formatIcon(response.data.weather[0].icon));
+
   let currentTemp = Math.round(response.data.main.temp);
   let currentHumidity = Math.round(response.data.main.humidity);
   let currentWind = Math.round(response.data.wind.speed);
@@ -133,6 +188,8 @@ searchForm.addEventListener("submit", chosenCity);
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+// let currentWeatherIcon = document.querySelector("#current-weather-icon");
 
 let fahrenheitLink = document.querySelector("#link-fahrenheit");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
