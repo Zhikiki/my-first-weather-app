@@ -85,6 +85,21 @@ function showDefaultCity(city) {
   axios.get(apiUrl).then(showDefaultCityTemp);
 }
 
+function popClick(event) {
+  event.preventDefault();
+  console.log(event.srcElement.innerHTML);
+  let cityElement = document.querySelector("#current-city");
+  cityElement.innerHTML = event.srcElement.innerHTML;
+
+  let apiKey = `da6d6b75abd767e257a129a08b4d0f5d`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityElement.innerHTML}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
+
+function getPopCityClick(array) {
+  array.addEventListener("click", popClick);
+}
+
 function chosenCity(event) {
   event.preventDefault();
   let cityElement = document.querySelector("#current-city");
@@ -183,13 +198,14 @@ let now = new Date();
 
 dateElement.innerHTML = formatedDate(now);
 
+let popCity = document.querySelectorAll(".popular-city");
+popCity.forEach(getPopCityClick);
+
 let searchForm = document.querySelector("#search-city-form");
 searchForm.addEventListener("submit", chosenCity);
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
-
-// let currentWeatherIcon = document.querySelector("#current-weather-icon");
 
 let fahrenheitLink = document.querySelector("#link-fahrenheit");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
