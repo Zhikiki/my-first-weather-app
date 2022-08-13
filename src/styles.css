@@ -108,13 +108,27 @@ form {
 
 .celsius-fahrenheit-link {
   text-decoration: none;
+  color: #fd3366;
+  padding: 4px 3px 1px;
+  border-radius: 7px;
+  transition: all 150ms ease-in-out;
 }
 
 .celsius-fahrenheit-link:hover {
-  text-decoration: underline;
-  color: #fd3366;
+  color: #fff;
   cursor: pointer;
+  background: #fd3366;
 }
+
+.active {
+  color: #fff;
+  cursor: pointer;
+  background: #fd3366;
+}
+.active:hover {
+  cursor: default;
+}
+
 .summury-details {
   margin: auto;
 }

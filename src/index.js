@@ -178,19 +178,26 @@ function getCurrentLocation(event) {
 function convertToFahrenheit(event) {
   event.preventDefault();
 
+  let fahrenheitTemperature = Math.round((14 * 9) / 5 + 32);
+
   let temperatureElement = document.querySelector("#current-temp");
-  let temperature = temperatureElement.innerHTML;
-  temperature = Number(temperature);
-  temperatureElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
+  temperatureElement.innerHTML = fahrenheitTemperature;
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
 }
 
 function convertToCelsius(event) {
   event.preventDefault();
 
-  let temperatureElement = document.querySelector("#current-temp");
-  let temperature = temperatureElement.innerHTML;
-  temperature = Number(temperature);
-  temperatureElement.innerHTML = Math.round(((temperature - 32) * 5) / 9);
+  let currentCity = document.querySelector("#current-city");
+
+  let apiKey = `da6d6b75abd767e257a129a08b4d0f5d`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity.innerHTML}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showCurrentLocationWeather);
+
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
 }
 
 let dateElement = document.querySelector("#date");
